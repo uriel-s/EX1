@@ -89,7 +89,7 @@ public class Polynom implements Polynom_able{
 		}	 
 	}
 
-// liad help
+// 
 	@Override
 	public void add(Monom m1) {
 		for(int i=0 ; i < pol.size() ; i++) {
