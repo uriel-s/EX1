@@ -19,6 +19,7 @@ import myMath.Monom;
 public class Polynom implements Polynom_able{
 
 	public ArrayList<Monom> pol = new ArrayList<Monom>();
+	Monom_Comperator c =new Monom_Comperator();
 	/**
 	 * Zero (empty polynom)
 	 */
@@ -41,7 +42,9 @@ public class Polynom implements Polynom_able{
 			Monom m = new Monom(matcher.group(1));
 			pol.add(m);
 		}
+		this.pol.sort(c);
 		this.arrange();
+		
 	}
 	@Override
 	public double f(double x) {
@@ -97,6 +100,8 @@ public class Polynom implements Polynom_able{
 			}
 		}
 		pol.add(m1);
+		this.arrange();
+		this.pol.sort(c);
 		return;
 
 	}
@@ -157,6 +162,8 @@ public class Polynom implements Polynom_able{
 
 	@Override
 	public double root(double x0, double x1, double eps) {
+		if(f(x0)==0) {return x0;}
+		if(f(x1)==0) {return x1;}
 		if(f(x1)*f(x0) > 0 || x1<=x0 || eps <= 0) 
 		{throw new RuntimeException("ERROR: illigal one or more parameters");}
 		double a=x0;
@@ -205,7 +212,9 @@ public class Polynom implements Polynom_able{
 		if(x0 > x1 || eps<=0 || eps>(x1-x0)) {throw new RuntimeException("ERROR: illigal one or more parameters");} 
 		double d=0;
 		for(double i=x0; i<=x1; i+=eps) {
+			if(f(i)>=0) {
 			d+= Math.abs(this.f(i)*eps);
+			}
 		}
 		return d;
 	}
