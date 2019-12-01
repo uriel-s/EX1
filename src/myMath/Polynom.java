@@ -100,6 +100,7 @@ public class Polynom implements Polynom_able{
 			}
 		}
 		pol.add(m1);
+	// add arrgane to this func
 		this.arrange();
 		this.pol.sort(c);
 		return;
