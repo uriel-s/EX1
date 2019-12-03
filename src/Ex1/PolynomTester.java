@@ -1,6 +1,6 @@
-package myMath;
+package Ex1;
 
-public class PolynomTest {
+public class PolynomTester {
 	public static void main(String[] args) {
 		test1();
 		test2();
@@ -85,10 +85,12 @@ public class PolynomTest {
         System.out.println(ans);
         System.out.println(v);
         
-
-		
+Monom mm1= new Monom ("2x^2");
+Polynom p12= new Polynom("2x^2");
+	boolean b=	p12.equals(mm1);
 		
 	}
+	
 	
 	
 }

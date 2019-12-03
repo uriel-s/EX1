@@ -1,6 +1,5 @@
-package myMath;
+package Ex1;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -65,7 +64,7 @@ public interface Polynom_able extends cont_function{
 	 * @param p1
 	 * @return true iff this polynom represents the same function as p1
 	 */
-	public boolean equals (Polynom_able p1);
+	public boolean equals (Object p1);
 	/**
 	 * Test if this is the Zero Polynom
 	 * @return
@@ -77,8 +76,6 @@ public interface Polynom_able extends cont_function{
 	 * @return 
 	 */
 	public Polynom_able copy();
-
-	
 	/**
 	 * Compute a new Polynom which is the derivative of this Polynom
 	 * @return
