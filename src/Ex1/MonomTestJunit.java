@@ -62,7 +62,10 @@ class MonomTestJunit {
 		Monom m1=new Monom(1, 1);	
 		Monom m2=new Monom(0, 0);	
 		Monom m3=new Monom(0, 2);	
-
+		Monom  m4 =new Monom(1,2);
+		
+		assumeTrue(m4.isZero());
+		
 		assumeFalse(m1.isZero());
 		assumeTrue(m2.isZero());
 		assumeTrue(m3.isZero());
@@ -108,13 +111,13 @@ class MonomTestJunit {
 		m2.multiply(new Monom(0,0));
 		assumeTrue(m2.isZero());
 	}
-//	@Test
-//	void testCopy() {
-//		Monom m1 = new Monom("12.5x^3");
-//		Monom Monom2 = new Monom("0");
-//		m2.copy(m1);
-//	}
+	//	@Test
+	//	void testCopy() {
+	//		Monom m1 = new Monom("12.5x^3");
+	//		Monom Monom2 = new Monom("0");
+	//		m2.copy(m1);
+	//	}
 
-	
+
 
 }

@@ -1,13 +1,24 @@
 package Ex1;
 
 public class  ComplexFunction implements complex_function{
-private Node root;
-	
-	
+	private Node root;
+	//private ComplexFunction right,left;
+	//private Operation
+
+	public ComplexFunction(function f) {
+		root= new Node(f);
+
+	}
+
 	public ComplexFunction(Operation op, function f1,function f2)
 	{
-		Node root ;
-	root.setOpp(opp);
+
+		Node left = new Node(f1);
+		Node right = new Node(f2);
+		root = new Node(op,left,right);
+
+
+
 	}
 
 

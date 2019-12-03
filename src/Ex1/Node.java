@@ -1,5 +1,4 @@
 package Ex1;
-//yair the loosersa
 public class Node {
 
 	private Node left;
@@ -11,18 +10,55 @@ public class Node {
 		this.function=f;
 		this.left=null;
 		this.right=null;
-
+		this.Operation=null;
 	}
-	
-	
-	
-	public Node (Operation op, Node n1, Node n2) {
-		this.func=null;
+
+
+
+	public Node (Operation operation, Node n1, Node n2) {
+		this.function=null;
 		this.left=n1;
 		this.right=n2;
+		this.Operation=operation;
 
 	}
-	
+
+
+
+
+
+
+
+	public function getFunction() {
+		return function;
+	}
+
+
+
+	public void setFunction(function function) {
+		this.function = function;
+	}
+
+
+
+	public Operation getOperation() {
+		return Operation;
+	}
+
+
+
+	public void setOperation(Operation operation) {
+		Operation = operation;
+	}
+
+
+
+	public Node getLeft() {
+		return left;
+	}
+
+
+
 	public void setLeft(Node left) {
 		this.left = left;
 	}
@@ -31,19 +67,5 @@ public class Node {
 	}
 	public void setRight(Node right) {
 		this.right = right;
-	}
-	public function getFunc() {
-		return func;
-	}
-	public void setFunc(function func) {
-		this.func = func;
-	}
-	public Operation getOpp() {
-		return opp;
-	}
-	public void setOpp(Operation opp) {
-		this.opp = opp;
-	}
+	}}
 
-	
-}
