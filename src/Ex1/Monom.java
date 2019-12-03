@@ -32,7 +32,7 @@ public class Monom implements function{
 		return this._power;
 	}
 	/** 
-	 * this method returns the derivative monom of this.
+	 * this method returns the derivative monom of this
 	 * @return
 	 */
 	public Monom derivative() {
