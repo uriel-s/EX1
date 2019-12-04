@@ -1,4 +1,4 @@
-package Ex1;
+package Ex1.Ex1Testing;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assume.assumeThat;
@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
 
 import org.junit.jupiter.api.Test;
+
+import Ex1.Monom;
 
 class MonomTestJunit {
 	public static final double EPSILON = 0.0000001;

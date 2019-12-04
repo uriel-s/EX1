@@ -1,5 +1,10 @@
-package Ex1;
+package Ex1.Ex1Testing;
 import java.util.ArrayList;
+
+import Ex1.ComplexFunction;
+import Ex1.Monom;
+import Ex1.Polynom;
+import Ex1.function;
 /**
  * This class represents a simple (naive) tester for the Monom class, 
  * Note: <br>
@@ -48,5 +53,8 @@ public class MonomTest {
 			boolean e = m.equals(m1);
 			System.out.println(i+") "+m +"    \tisZero: "+m.isZero()+"  \teq: "+e);
 		}
+		
+
+
 	}
 }

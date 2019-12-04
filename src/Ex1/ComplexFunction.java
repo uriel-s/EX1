@@ -2,8 +2,7 @@ package Ex1;
 
 public class  ComplexFunction implements complex_function{
 	private Node root;
-	//private ComplexFunction right,left;
-	//private Operation
+	
 
 	public ComplexFunction(function f) {
 		root= new Node(f);
@@ -16,11 +15,32 @@ public class  ComplexFunction implements complex_function{
 		Node left = new Node(f1);
 		Node right = new Node(f2);
 		root = new Node(op,left,right);
-
-
-
+	
 	}
+	public String toString () {
+		String s="";
+		s=s+root.getFunction().toString();
+		if(root.getLeft()!=null) s+=preOrder(root.getLeft());
+		if(root.getRight()!=null) s+=preOrder(root.getRight());
 
+		
+		return s;
+		
+			
+		}
+	
+	
+	
+	public String preOrder (Node n) {
+	String s="";
+	s=s+n.getFunction().toString();
+	if(n.getLeft()!=null)s=s+preOrder(n.getLeft()); 
+	if(n.getRight()!=null)s=s+preOrder(n.getRight()); 
+	
+	return s;
+	
+		
+	}
 
 
 	@Override
@@ -28,6 +48,7 @@ public class  ComplexFunction implements complex_function{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
 
 	@Override
 	public function initFromString(String s) {
@@ -94,4 +115,7 @@ public class  ComplexFunction implements complex_function{
 		return null;
 	}
 
+	
+	
+	
 }
