@@ -112,7 +112,7 @@ class MonomTestJunit {
 		assertEquals(m2._power,8);
 		m2.multiply(new Monom(0,0));
 		assumeTrue(m2.isZero());
-	}
+	}	}
 	//	@Test
 	//	void testCopy() {
 	//		Monom m1 = new Monom("12.5x^3");
@@ -120,6 +120,4 @@ class MonomTestJunit {
 	//		m2.copy(m1);
 	//	}
 
-
-
-}
+	
