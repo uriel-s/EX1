@@ -1,10 +1,10 @@
 package Ex1;
 
 public class  ComplexFunction implements complex_function{
-	private Node root;
+	 Node root;
 
 	// constructors
-	public ComplexFunction( ) {
+	public ComplexFunction() {
 		this.root= null;
 
 	}
@@ -35,11 +35,13 @@ public class  ComplexFunction implements complex_function{
 	}
 
 	// complecfunction funcs
+	//eror 
+	
 	public String toString () {
 		String s="";
-		s=s+root.getFunction().toString();
-		if(root.getLeft()!=null) s+=preOrder(root.getLeft());
-		if(root.getRight()!=null) s+=preOrder(root.getRight());
+		s=s+this.root.getFunction().toString();
+		if(this.root.getLeft()!=null) s+=preOrder(this.root.getLeft());
+		if(this.root.getRight()!=null) s+=preOrder(this.root.getRight());
 
 
 		return s;
@@ -73,22 +75,23 @@ public class  ComplexFunction implements complex_function{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+//didnt tested yet
 	@Override
 	public function copy() {
 
-
-		ComplexFunction f = new ComplexFunction(); 
-		f.root= new Node(this.root.getFunction());
-		f.root.setLeft(this.root.getLeft());
-		f.root.setRight(this.root.getRight());
-		f.root.setOperation(this.root.getOperation());
-		return f;
+		ComplexFunction cp = new ComplexFunction(); 
+		cp.root= new Node(this.root.getFunction());
+		cp.root.setLeft(this.root.getLeft());
+		cp.root.setRight(this.root.getRight());
+		cp.root.setOperation(this.root.getOperation());
+		return cp;
 	}
 
 	@Override
+	// didnt finished
 	public void plus(function f1) {
-		ComplexFunction cp = new ComplexFunction(Operation.Plus, f1, this);
+		ComplexFunction temp = new ComplexFunction();
+		ComplexFunction cp = new ComplexFunction(Operation.Plus, this, f1);
 
 	}
 

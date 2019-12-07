@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import Ex1.ComplexFunction;
 import Ex1.Monom;
+import Ex1.Operation;
 import Ex1.Polynom;
 import Ex1.function;
 /**
@@ -26,6 +27,8 @@ public class MonomTest {
 	public static void main(String[] args) {
 		test1();
 		test2();
+		
+
 	}
 	private static void test1() {
 		System.out.println("*****  Test1:  *****");
@@ -57,4 +60,5 @@ public class MonomTest {
 
 
 	}
+	
 }
