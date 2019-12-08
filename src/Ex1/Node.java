@@ -24,9 +24,13 @@ public class Node {
 	}
 
 
+	public String toString()
+	{
 
-
-
+		String s="";
+		s= this.function.toString();
+	return s;
+	}
 
 
 	public function getFunction() {
