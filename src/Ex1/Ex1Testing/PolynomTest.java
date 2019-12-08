@@ -94,6 +94,24 @@ public class PolynomTest {
 	public void testRoot() {
 		 Polynom c=new Polynom("x^2-3x");
 	        double ans=c.root(1, 4, 0.00000001);
-		assertEquals(, ans, 0.00000001);
+		assertEquals(3, ans, 0.00000001);
+	}
+	@Test
+	public void testArea() {
+		    Polynom c=new Polynom("4x^6-5x^5+1");
+	        double ans=c.area(-1, 0, 0.0001);
+		    assertEquals(2.405, ans, 0.001);
+	}
+	@Test
+	public void testEquals() {
+		    Polynom c=new Polynom("4x^6-5x^5+1");
+		    Polynom c1=new Polynom("4x^6-5x^5+1");
+		    Polynom c2=new Polynom("4x^6-5x^5+2");
+
+		    boolean b= c.equals(c1);
+		    boolean r= c.equals(c2);
+		    assertTrue(b);
+		    assertFalse(r);
+		    
 	}
 }

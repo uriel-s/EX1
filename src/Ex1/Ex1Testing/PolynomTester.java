@@ -82,17 +82,17 @@ public class PolynomTester {
         System.out.println(a1.toString());
         a1.multiply(m1);
         System.out.println(a1.toString());
-        
+        System.out.println("888888888");
         Polynom c=new Polynom("x^2-3x");
         double ans=c.root(1, 4, 0.00000001);
         double v=c.f(5);
         System.out.println(ans);
         System.out.println(v);
         
-Monom mm1= new Monom ("2x^2");
-Polynom p12= new Polynom("2x^2");
-	boolean b=	p12.equals(mm1);
-		
+//Monom mm1= new Monom ("2x^2");
+//Polynom p12= new Polynom("2x^2");
+//	boolean b=	p12.equals(mm1);
+//		
 	}
 	
 	
