@@ -65,14 +65,14 @@ public class Monom implements function{
 		if(s=="0") {
 			this.set_coefficient(0);
 			this.set_power(0);
-		return;
+			return;
 		}
-		
+
 		if(s.charAt(0)=='0'&&s.charAt(1)=='x') {
-	this.set_coefficient(0);
-	this.set_power(0);
-return;
-}
+			this.set_coefficient(0);
+			this.set_power(0);
+			return;
+		}
 
 
 
@@ -84,51 +84,51 @@ return;
 		{
 			this.set_coefficient(1);
 			this.set_power(1);   
-			
+
 			return;
 		}
 		else if(s.equals("-x"))
 		{
 			this.set_coefficient(-1);
 			this.set_power(1);   
-			
-		return;
+
+			return;
 		}
 
-		   
+
 
 		if(s.charAt(0)=='-'&&s.charAt(1)=='x' ) 
 		{
 			if(s.charAt(2)!='^') 			throw new RuntimeException("input isnt good ");	
 
 			this.set_coefficient(-1);
-		s=s.substring(3);
-		int b=Sumpower(s);
-		this.set_power(b);
-		
-		
-return;
+			s=s.substring(3);
+			int b=Sumpower(s);
+			this.set_power(b);
+
+
+			return;
 		}
-if(s.charAt(0)=='x') { 
-if(s.charAt(1)!='^')	throw new RuntimeException("input isnt good ");	
+		if(s.charAt(0)=='x') { 
+			if(s.charAt(1)!='^')	throw new RuntimeException("input isnt good ");	
 
-	this.set_coefficient(1);
-	s=s.substring(2);
- int b=Sumpower(s);
- this.set_power(b);
+			this.set_coefficient(1);
+			s=s.substring(2);
+			int b=Sumpower(s);
+			this.set_power(b);
 
-}
+		}
 
 
 
 
 		else if (isNumeric(s)) 
 		{
-			
+
 			this.set_coefficient(Double.valueOf(s)) ; 
 
 			this.set_power(0);
-			
+
 
 
 
@@ -154,7 +154,7 @@ if(s.charAt(1)!='^')	throw new RuntimeException("input isnt good ");
 
 			this.set_coefficient(a);
 
-			
+
 
 			s=s.substring(counter);
 
@@ -219,7 +219,7 @@ if(s.charAt(1)!='^')	throw new RuntimeException("input isnt good ");
 
 
 	}
-//this code take from https://stackoverflow.com/questions/36490757/regex-for-polynomial-expression
+	//this code take from https://stackoverflow.com/questions/36490757/regex-for-polynomial-expression
 	public static boolean isNumeric(String strNum) {
 		try {
 			double d = Double.parseDouble(strNum);
@@ -269,14 +269,16 @@ if(s.charAt(1)!='^')	throw new RuntimeException("input isnt good ");
 	public int _power;
 	@Override
 	public function initFromString(String s) {
-		// TODO Auto-generated method stub
-		return null;
+		Monom m = new Monom(s);
+		return m;
 	}
-    
+
 	@Override
 	public function copy() {
-		// TODO Auto-generated method stub
-		return null;
+		Monom m = new Monom("0");
+		m.set_coefficient(this.get_coefficient());;
+		m.set_power(this.get_power());
+		return m;
 	}
 
 

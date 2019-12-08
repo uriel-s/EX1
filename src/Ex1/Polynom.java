@@ -44,7 +44,7 @@ public class Polynom implements Polynom_able{
 		}
 		this.pol.sort(c);
 		this.arrange();
-		
+
 	}
 	@Override
 	public double f(double x) {
@@ -89,7 +89,7 @@ public class Polynom implements Polynom_able{
 		}	 
 	}
 
-// idea
+	// idea
 	@Override
 	public void add(Monom m1) {
 		for(int i=0 ; i < pol.size() ; i++) {
@@ -100,7 +100,7 @@ public class Polynom implements Polynom_able{
 			}
 		}
 		pol.add(m1);
-	// add arrgane to this func
+		// add arrgane to this func
 		this.arrange();
 		this.pol.sort(c);
 		return;
@@ -135,10 +135,10 @@ public class Polynom implements Polynom_able{
 		}
 		this.pol= new ArrayList<Monom>(ans.pol);
 		this.arrange();
-		
-		
+
+
 	}
-//check here
+	//check here
 	@Override
 	public boolean equals(Object p1) {
 		Iterator<Monom> monom = this.iteretor();
@@ -214,7 +214,7 @@ public class Polynom implements Polynom_able{
 		double d=0;
 		for(double i=x0; i<=x1; i+=eps) {
 			if(f(i)>=0) {
-			d+= Math.abs(this.f(i)*eps);
+				d+= Math.abs(this.f(i)*eps);
 			}
 		}
 		return d;
@@ -248,8 +248,8 @@ public class Polynom implements Polynom_able{
 	}
 	@Override
 	public function initFromString(String s) {
-		// TODO Auto-generated method stub
-		return null;
+		Polynom p = new Polynom(s);
+		return p;
 	}
 
 }

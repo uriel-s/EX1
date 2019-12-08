@@ -1,5 +1,6 @@
 package Ex1;
 
+import java.io.IOException;
 import java.util.concurrent.CompletionException;
 import java.util.function.Function;
 
@@ -24,127 +25,161 @@ public class  ComplexFunction implements complex_function{
 
 	}
 
-
-
-	
-
 	public ComplexFunction(function f) {
 		this.root=f;
 
 	}
 
 
-
 	// complecfunction funcs
-	//eror 
+
 
 	public String toString () {
 		String s= "";
-if(this.root instanceof Monom ||this.root instanceof Polynom ) s+= root.toString();
-if (this.root instanceof ComplexFunction ) s+=root.toString();
-if(this.right instanceof Monom||this.right instanceof Polynom) s+= right.toString();
-if (this.right instanceof ComplexFunction ) s+=right.toString();	
-		
+		if(this.root instanceof Monom ||this.root instanceof Polynom ) 
+		{
+			if(this.Operation!=null)s+=  this.Operation.toString()+ "(" ;
+			s+= this.root.toString();
+		}
+		if (this.root instanceof ComplexFunction )
+		{
+			if(this.Operation!=null)s+=  this.Operation.toString()+ "(" ;
+			s+=  root.toString();
+		}
+		if(this.right instanceof Monom||this.right instanceof Polynom)
+			s+=","+ right.toString()+")";
+		if (this.right instanceof ComplexFunction ) 
+			s+= right.toString();	
+
 		return s;
-	
-}
 
-		//			String	s=inOrder(this);
-		//			return s;
-		//		}
-		//		public String inOrder (function f) {
-		//			String s="";
-		//			s=s+this.root.toString();
-		//			if(this.right!=null) s+=inOrder(this.right);
-		//			return s;
-		//		}
-		
+	}
 
 
+	@Override
+	public double f(double x) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
-		@Override
-		public double f(double x) {
-			// TODO Auto-generated method stub
-			return 0;
+
+	@Override
+	public function initFromString(String s) {
+		if(legalString(s)==false  ) throw new IllegalArgumentException("illigal input");
+		ComplexFunction cpf = new ComplexFunction();
+		String tmp="";
+		while(s.charAt(i)!='(')
+		{		
+
+		}	
+
+		Polynom p = new Polynom("x");
+		return p;
+	}
+
+	public boolean legalString(String s) {
+		int counter1=0;
+		for (int i = 0; i < s.length(); i++) {
+			if(s.charAt(i)==')') counter1=counter1+2;
+			if(s.charAt(i)=='(') counter1--;
+			if(s.charAt(i)==';') counter1--;
+			if(counter1<0) return false;
 		}
+		if (counter1==0)return true;
+		return false; 
+	}
 
 
-		@Override
-		public function initFromString(String s) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		//didnt tested yet
-		@Override
-
-		public function copy() {
-
-			ComplexFunction cp = new ComplexFunction(); 
-			cp.root=this.root.copy();
-			cp.Operation=this.Operation;
-			if(this.right!=null) cp.right=this.right.copy();	
-			return cp;
-		}
-
-		@Override
-		// didnt finished
-		public void plus(function f1) {
-			ComplexFunction f = (ComplexFunction) this.copy();
-			this.root=f;
-			this.right=f1;
-            this .Operation=Operation.Plus;
-
-		}
-
-		@Override
-		public void mul(function f1) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void div(function f1) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void max(function f1) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void min(function f1) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void comp(function f1) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public function left() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public function right() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public Operation getOp() {
-			// TODO Auto-generated method stub
-			return null;
-		}
 
 
+
+
+
+
+	//didnt tested yet
+	@Override
+
+	public function copy() {
+
+		ComplexFunction cp = new ComplexFunction(); 
+		cp.root=this.root.copy();
+		cp.Operation=this.Operation;
+		if(this.right!=null) cp.right=this.right.copy();	
+		return cp;
+	}
+
+	@Override
+	// didnt finished
+	public void plus(function f1) {
+		ComplexFunction f = (ComplexFunction) this.copy();
+		this.root=f;
+		this.right=f1;
+		this .Operation=Operation.Plus;
+
+	}
+
+	@Override
+	public void mul(function f1) {
+		ComplexFunction f = (ComplexFunction) this.copy();
+		this.root=f;
+		this.right=f1;
+		this .Operation=Operation.Times;
 
 
 	}
+
+	@Override
+	public void div(function f1) {
+		ComplexFunction f = (ComplexFunction) this.copy();
+		this.root=f;
+		this.right=f1;
+		this .Operation=Operation.Divid;
+
+	}
+
+	@Override
+	public void max(function f1) {
+		ComplexFunction f = (ComplexFunction) this.copy();
+		this.root=f;
+		this.right=f1;
+		this .Operation=Operation.Max;
+
+	}
+
+	@Override
+	public void min(function f1) {
+		ComplexFunction f = (ComplexFunction) this.copy();
+		this.root=f;
+		this.right=f1;
+		this .Operation=Operation.Min;
+
+	}
+
+	@Override
+	public void comp(function f1) {
+		ComplexFunction f = (ComplexFunction) this.copy();
+		this.root=f;
+		this.right=f1;
+		this .Operation=Operation.Comp;
+	}
+
+	@Override
+	public function left() {
+		return this.root.copy();
+	}
+
+	@Override
+	public function right() {
+		return this.right();
+	}
+
+	@Override
+	public Operation getOp() {
+
+		return this.Operation;
+	}
+
+
+
+
+}

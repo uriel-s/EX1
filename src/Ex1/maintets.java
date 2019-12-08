@@ -5,23 +5,19 @@ public class maintets {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Monom m =new Monom("x");
-		Polynom p = new Polynom("2x^2");
-		ComplexFunction cp1 = new ComplexFunction(Operation.Plus, p , p);
-		ComplexFunction cp = new ComplexFunction(m);
-		cp1.plus(p);
-		//ComplexFunction cp1 = new ComplexFunction(p);
-		//ComplexFunction cp2 = new ComplexFunction(m);
-		//cp2= (ComplexFunction) cp1.copy();
-		//System.out.println(cp1);
-		//System.out.println(cp2);
-		//ystem.out.println(cp3);
+		Polynom p1 =new Polynom("0");
+		Polynom p2 = new Polynom("2x^2+x");
+		Polynom p3 = new Polynom("3x^12");
+
+		ComplexFunction cp1 = new ComplexFunction(Operation.Plus, p1 , p2);
+		ComplexFunction cp = new ComplexFunction(p1);
+		cp1.plus(p3);
 
 
-		System.out.println(cp1);
-		//	System.out.println(m);
-		//System.out.println(p);
-		//System.out.println(cp);
+
+		System.out.println("this is cp"+cp.toString());
+		System.out.println("this is cp1: "+cp1);
+		
 
 
 	}
