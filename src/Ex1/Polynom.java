@@ -20,6 +20,7 @@ public class Polynom implements Polynom_able{
 
 	public ArrayList<Monom> pol = new ArrayList<Monom>();
 	Monom_Comperator c =new Monom_Comperator();
+	
 	/**
 	 * Zero (empty polynom)
 	 */
@@ -141,6 +142,7 @@ public class Polynom implements Polynom_able{
 //check here
 	@Override
 	public boolean equals(Object p1) {
+		if (!(p1 instanceof Polynom)) {return false;}
 		Iterator<Monom> monom = this.iteretor();
 		Iterator<Monom> monom1 = ((Polynom) p1).iteretor();
 		while(monom1.hasNext()) {
