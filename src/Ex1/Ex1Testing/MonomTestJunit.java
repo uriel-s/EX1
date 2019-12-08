@@ -66,7 +66,7 @@ class MonomTestJunit {
 		Monom m3=new Monom(0, 2);	
 		Monom  m4 =new Monom(1,2);
 		
-		assumeTrue(m4.isZero());
+		assumeFalse(m4.isZero());
 		
 		assumeFalse(m1.isZero());
 		assumeTrue(m2.isZero());
@@ -75,7 +75,7 @@ class MonomTestJunit {
 	}
 
 	@Test
-	void testEualsMonom() {
+	void testEqualsMonom() {
 		Monom m1 =new Monom(0,0);
 		Monom m2 =new Monom(0.0000,2);
 		Monom m3 =new Monom(10,0);
