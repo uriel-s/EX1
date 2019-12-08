@@ -1,8 +1,14 @@
-package Ex1;
+package Ex1.Ex1Testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import Ex1.ComplexFunction;
+import Ex1.Monom;
+import Ex1.Operation;
+import Ex1.Polynom;
+import Ex1.function;
 
 class ComplexFunctionTest {	
 	Monom m =new Monom("2x^2");
