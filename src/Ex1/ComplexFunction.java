@@ -49,7 +49,7 @@ public class  ComplexFunction implements complex_function{
 		if(this.right instanceof Monom||this.right instanceof Polynom)
 			s+=","+ right.toString()+")";
 		if (this.right instanceof ComplexFunction ) 
-			s+= right.toString();	
+			s+= ","+right.toString()+")";	
 
 		return s;
 
@@ -65,30 +65,84 @@ public class  ComplexFunction implements complex_function{
 
 	@Override
 	public function initFromString(String s) {
-		if(legalString(s)==false  ) throw new IllegalArgumentException("illigal input");
-		ComplexFunction cpf = new ComplexFunction();
-		String tmp="";
-		while(s.charAt(i)!='(')
-		{		
+		//checking if the String is lligal;
+		if(legalString(s)==false  ) throw new IllegalArgumentException("illigal input :(");
+		ComplexFunction cp = new ComplexFunction();
 
-		}	
+		//set the operation of the complexFunction
+		if (FindOp(s)==null) { Polynom p=  new Polynom() ;
+			p=	(Polynom) p.initFromString(s);
+	    	cp.root=p;
+	    	cp.right=null;
+	    	cp.Operation=null;
+		
+	    	return cp;
+	
+		}
+		 
+			cp.Operation=Operation.valueOf(FindOp(s));
+		s = s.substring(FindOp(s).length());
 
-		Polynom p = new Polynom("x");
-		return p;
+
+		int center = FindCenter(s);
+		String SRoot=s.substring(1,center);
+		String SRight=s.substring(center+1,s.length()-1);
+
+		//set the root of the complexFunction
+		cp.root=initFromString(SRoot);
+		cp.right=initFromString(SRight);
+
+		return cp;
 	}
 
 	public boolean legalString(String s) {
 		int counter1=0;
 		for (int i = 0; i < s.length(); i++) {
-			if(s.charAt(i)==')') counter1=counter1+2;
-			if(s.charAt(i)=='(') counter1--;
-			if(s.charAt(i)==';') counter1--;
+			if(s.charAt(i)=='(') counter1=counter1+2;
+			if(s.charAt(i)==')') counter1--;
+			if(s.charAt(i)==',') counter1--;
 			if(counter1<0) return false;
 		}
 		if (counter1==0)return true;
 		return false; 
 	}
+	public int FindCenter(String s) {
+		int i=0;
+		int j=1;
+		while(s.charAt(i)!='('&& i<s.length()-1)		i++;
+		while(j>0) 
+		{
+			i++;
+			if(s.charAt(i)=='(')  j++;
+			if(s.charAt(i)==',')  j--;
 
+		}
+
+		return i;
+	}
+
+
+
+
+	public  String FindOp(String s) { 
+
+		String tmp="";
+		if(s.charAt(0)!='P'&&s.charAt(0)!='T'&&s.charAt(0)!='D'&&s.charAt(0)!='M'&&s.charAt(0)!='C'&&s.charAt(0)!='N'&&s.charAt(0)!='E')return null;
+		for (int i = 0; i < s.length(); i++) {
+			if(s.charAt(i)=='(') return tmp;
+			tmp+=s.charAt(i);
+
+		}
+
+		return tmp;
+		//		if (tmp=="Plus")return s;
+		//		if (tmp=="Times")return Operation.Times;
+		//		if (tmp=="Divid")return Operation.Divid;
+		//		if (tmp=="Max")return Operation.Max;
+		//		if (tmp=="Min")return Operation.Min;
+		//		if (tmp=="Comp")return Operation.Comp;
+		//else throw new IllegalArgumentException("illigal input");
+	}	
 
 
 
