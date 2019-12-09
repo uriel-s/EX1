@@ -57,8 +57,24 @@ public class  ComplexFunction implements complex_function{
 
 
 	@Override
-	public double f(double x) {
-		// TODO Auto-generated method stub
+	public double f(double x) 
+	{
+
+		if(this.Operation==null) {
+			Polynom p= new Polynom() ;
+			p=(Polynom) this.root.copy();
+			return p.f(x);	
+		}
+		if(this.Operation==Operation.Plus) return root.f(x)+right.f(x);
+		if(this.Operation==Operation.Divid) return root.f(x)/right.f(x);
+		if(this.Operation==Operation.Times) return root.f(x)*right.f(x);
+		if(this.Operation==Operation.Max) return Math.max(root.f(x),right.f(x));
+		if(this.Operation==Operation.Min) return Math.min(root.f(x),right.f(x));
+		if(this.Operation==Operation.Comp) {
+			double y = right.f(x);
+			return root.f(y);
+		}
+		
 		return 0;
 	}
 
@@ -71,16 +87,16 @@ public class  ComplexFunction implements complex_function{
 
 		//set the operation of the complexFunction
 		if (FindOp(s)==null) { Polynom p=  new Polynom() ;
-			p=	(Polynom) p.initFromString(s);
-	    	cp.root=p;
-	    	cp.right=null;
-	    	cp.Operation=null;
-		
-	    	return cp;
-	
+		p=	(Polynom) p.initFromString(s);
+		cp.root=p;
+		cp.right=null;
+		cp.Operation=null;
+
+		return cp;
+
 		}
-		 
-			cp.Operation=Operation.valueOf(FindOp(s));
+
+		cp.Operation=Operation.valueOf(FindOp(s));
 		s = s.substring(FindOp(s).length());
 
 
@@ -145,12 +161,6 @@ public class  ComplexFunction implements complex_function{
 	}	
 
 
-
-
-
-
-
-	//didnt tested yet
 	@Override
 
 	public function copy() {
