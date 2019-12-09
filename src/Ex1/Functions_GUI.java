@@ -14,8 +14,10 @@ import com.google.gson.*;
 
 public class Functions_GUI implements functions {
 	public ArrayList<function> Func = new ArrayList<function>();
+	
 	public static Color[] Colors = {Color.blue, Color.cyan,
 			Color.MAGENTA, Color.ORANGE, Color.red, Color.GREEN, Color.PINK};
+	
 	@Override
 	public boolean add(function arg0) {
 		return this.Func.add(arg0);
@@ -103,13 +105,12 @@ public class Functions_GUI implements functions {
 			{
 				Func.add(fun.initFromString(line));
 			}
-
+			  br.close();
 		} 
 		catch (IOException e) 
 		{
 			e.printStackTrace();
 		}
-
 	}
 
 
@@ -153,8 +154,18 @@ public class Functions_GUI implements functions {
 
 	@Override
 	public void drawFunctions(String json_file) {
-		// TODO Auto-generated method stub
-		Gson gson = new Gson();
+//		Gson gson = new Gson();
+//		try 
+//		{
+//			FileReader reader = new FileReader(json_file);
+//			//ComplexFunction cf = gson.fromJson(reader,ComplexFunction.class);
+//			
+//		} 
+//		catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		}
 	}
 
-}
+	}
+
+
