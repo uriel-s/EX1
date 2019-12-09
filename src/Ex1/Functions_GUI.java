@@ -1,5 +1,6 @@
 package Ex1;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,10 +10,12 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import com.google.gson.*;
 
 public class Functions_GUI implements functions {
 	public ArrayList<function> Func = new ArrayList<function>();
-
+	public static Color[] Colors = {Color.blue, Color.cyan,
+			Color.MAGENTA, Color.ORANGE, Color.red, Color.GREEN, Color.PINK};
 	@Override
 	public boolean add(function arg0) {
 		return this.Func.add(arg0);
@@ -105,7 +108,6 @@ public class Functions_GUI implements functions {
 		catch (IOException e) 
 		{
 			e.printStackTrace();
-			System.out.println("could not read file");
 		}
 
 	}
@@ -113,23 +115,16 @@ public class Functions_GUI implements functions {
 
 	@Override
 	public void saveToFile(String file) throws IOException {
-
-		//String fileName = "output.csv";
-
 		try 
 		{
 			PrintWriter pw = new PrintWriter(new File(file));
 
 			StringBuilder sb = new StringBuilder();
+			Iterator <function> i = this.Func.iterator();
 
-			sb.append("first name");
-			sb.append(",");
-			sb.append("last name");
-			sb.append("\n");
-			sb.append("Israel");
-			sb.append(",");
-			sb.append("Israeli");
-			sb.append("\n");
+			while(i.hasNext()) {
+				sb.append(i.next().toString()+"\n"); 
+			}
 
 			pw.write(sb.toString());
 			pw.close();
@@ -143,14 +138,23 @@ public class Functions_GUI implements functions {
 
 	@Override
 	public void drawFunctions(int width, int height, Range rx, Range ry, int resolution) {
-		// TODO Auto-generated method stub
-
+		StdDraw.setCanvasSize(width,height);
+		StdDraw.setXscale(rx.get_min(), rx.get_max());
+		StdDraw.setYscale(ry.get_min(), ry.get_max());
+		StdDraw.setPenRadius(0.01);
+		double r = Math.abs(rx.get_max()-rx.get_min())/resolution;
+		for(int i=0; i<Func.size(); i++) {
+			StdDraw.setPenColor(Colors[i%Colors.length]);
+          for(double j=rx.get_min();j<=rx.get_max();j+=r) {
+	            StdDraw.line(j, Func.get(i).f(j), j+r, Func.get(i).f(j+r));
+          }
+		}
 	}
 
 	@Override
 	public void drawFunctions(String json_file) {
 		// TODO Auto-generated method stub
-
+		Gson gson = new Gson();
 	}
 
 }

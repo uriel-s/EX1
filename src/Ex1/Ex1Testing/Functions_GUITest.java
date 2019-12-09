@@ -1,4 +1,4 @@
-package Ex1Testing;
+package Ex1.Ex1Testing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
