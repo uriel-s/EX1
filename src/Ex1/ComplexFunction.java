@@ -175,6 +175,11 @@ public class  ComplexFunction implements complex_function{
 	@Override
 	// didnt finished
 	public void plus(function f1) {
+		if(this.root==null)
+		{
+		this.root=f1;
+		return;
+		}
 		ComplexFunction f = (ComplexFunction) this.copy();
 		this.root=f;
 		this.right=f1;
@@ -184,6 +189,8 @@ public class  ComplexFunction implements complex_function{
 
 	@Override
 	public void mul(function f1) {
+		
+		
 		ComplexFunction f = (ComplexFunction) this.copy();
 		this.root=f;
 		this.right=f1;
