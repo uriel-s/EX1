@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import com.google.gson.*;
 
 public class Functions_GUI implements functions {
 	public ArrayList<function> Func = new ArrayList<function>();
@@ -141,7 +142,7 @@ public class Functions_GUI implements functions {
 		StdDraw.setXscale(rx.get_min(), rx.get_max());
 		StdDraw.setYscale(ry.get_min(), ry.get_max());
 		StdDraw.setPenRadius(0.01);
-		double r = (rx.get_max()-rx.get_min())/resolution;
+		double r = Math.abs(rx.get_max()-rx.get_min())/resolution;
 		for(int i=0; i<Func.size(); i++) {
 			StdDraw.setPenColor(Colors[i%Colors.length]);
           for(double j=rx.get_min();j<=rx.get_max();j+=r) {
@@ -153,7 +154,7 @@ public class Functions_GUI implements functions {
 	@Override
 	public void drawFunctions(String json_file) {
 		// TODO Auto-generated method stub
-
+		Gson gson = new Gson();
 	}
 
 }
