@@ -47,8 +47,7 @@ class ComplexFunctionTest {
 		assertEquals(ans, expected3);
 		double expected4= cp7.f(2);
 		assertEquals(expected4, cp4.f(2));
-
-//good
+		//good
 	}
 
 	@Test
@@ -81,59 +80,104 @@ class ComplexFunctionTest {
 
 	}
 
-		@Test
-		void testPlus() {
-			Polynom help = new Polynom("3x^2+1");
-			ComplexFunction expected1 =new ComplexFunction();
-			expected1.plus(cp1);
-		
-		}
-	
+	@Test
+	void testPlus() {
+
+		ComplexFunction	accual= new ComplexFunction(p1);
+		accual.plus(p1);
+		ComplexFunction expected1 = (Ex1.ComplexFunction) cp1.initFromString("Plus(+2.0x^2,+2.0x^2)");
+		assertEquals(accual.toString(), expected1.toString());
+	}
+
+
+
+	@Test
+	void testMul() {
+		ComplexFunction	accual= new ComplexFunction(p1);
+		accual.mul(p1);
+		ComplexFunction expected1 = (Ex1.ComplexFunction) cp1.initFromString("Times(+2.0x^2,+2.0x^2)");
+		assertEquals(accual.toString(), expected1.toString());
+	}
+
+
+
+	@Test
+	void testDiv() {
+
+		ComplexFunction	accual= new ComplexFunction(p1);
+		accual.div(p1);
+		ComplexFunction expected1 = (Ex1.ComplexFunction) cp1.initFromString("Divid(+2.0x^2,+2.0x^2)");
+		assertEquals(accual.toString(), expected1.toString());
+	}
+
+	@Test
+	void testMax() {
+
+		ComplexFunction	accual= new ComplexFunction(p1);
+		accual.max(p1);
+		ComplexFunction expected1 = (Ex1.ComplexFunction) cp1.initFromString("Max(+2.0x^2,+2.0x^2)");
+		assertEquals(accual.toString(), expected1.toString());
+	}
+
+
+
+
+
+	//	@Test
+	void testMin() {
+		ComplexFunction	accual= new ComplexFunction(p1);
+		accual.min(p1);
+		ComplexFunction expected1 = (Ex1.ComplexFunction) cp1.initFromString("Min(+2.0x^2,+2.0x^2)");
+		assertEquals(accual.toString(), expected1.toString());
+	}
+
+	@Test
+	void testComp() {
+		ComplexFunction	accual= new ComplexFunction(p1);
+		accual.comp(p1);
+		ComplexFunction expected1 = (Ex1.ComplexFunction) cp1.initFromString("Comp(+2.0x^2,+2.0x^2)");
+		assertEquals(accual.toString(), expected1.toString());
+	}
+
+	@Test
+	void testLeft() {
+		ComplexFunction expected1 = (Ex1.ComplexFunction) cp6.left();
+		assertEquals(expected1.toString(), cp5.toString());
+
+	}
+
+	@Test
+	void testRight() {
+		ComplexFunction expected1 = (Ex1.ComplexFunction) cp5.right();
+		assertEquals(expected1.toString(), cp3.toString());
+
+	}
+
+
+	@Test
+	void testGetOp() {
+
+		Operation expected1	=cp10.getOp();
+		Operation expected2	=cp7.getOp();
+		assertEquals(expected1,Operation.Plus);
+		assertEquals(expected2, Operation.Max);
+	}
+
+	@Test
+	void testEquals() {
+		ComplexFunction	expected1= new ComplexFunction(cp1);
+		ComplexFunction	expected2= new ComplexFunction(cp1);
+
 
 		
-		//	@Test
-	//	void testMul() {
-	//		fail("Not yet implemented");
-	//	}
-	//
-	//	@Test
-	//	void testDiv() {
-	//		fail("Not yet implemented");
-	//	}
-	//
-	//	@Test
-	//	void testMax() {
-	//		fail("Not yet implemented");
-	//	}
-	//
-	//	@Test
-	//	void testMin() {
-	//		fail("Not yet implemented");
-	//	}
-	//
-	//	@Test
-	//	void testComp() {
-	//		fail("Not yet implemented");
-	//	}
-	//
-	//	@Test
-	//	void testLeft() {
-	//		fail("Not yet implemented");
-	//	}
-	//
-	//	@Test
-	//	void testRight() {
-	//		fail("Not yet implemented");
-	//	}
-	//
-	//	@Test
-	//	void testGetOp() {
-	//		fail("Not yet implemented");
-	//	}
-	//
-	//	@Test
-	//	void testEquals() {
-	//		fail("Not yet implemented");
-	//	}
-	//
+		boolean b = expected1.equals(expected2);
+      System.out.println("aaa");
+		System.out.println(b);	
+		//assertEquals(expected2.toString(),expected1.toString());
+
+
+	}
+	
+	
+
 }

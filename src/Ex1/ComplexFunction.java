@@ -59,12 +59,11 @@ public class  ComplexFunction implements complex_function{
 	@Override
 	public double f(double x) 
 	{
+		if (this.right==null) return this.root.f(x);
+		if (this.root==null) return this.right.f(x);
 
-		if(this.Operation==null) {
-			Polynom p= new Polynom() ;
-			p=(Polynom) this.root.copy();
-			return p.f(x);	
-		}
+
+	
 		if(this.Operation==Operation.Plus) return root.f(x)+right.f(x);
 		if(this.Operation==Operation.Divid) return root.f(x)/right.f(x);
 		if(this.Operation==Operation.Times) return root.f(x)*right.f(x);
@@ -74,7 +73,7 @@ public class  ComplexFunction implements complex_function{
 			double y = right.f(x);
 			return root.f(y);
 		}
-		
+
 		return 0;
 	}
 
@@ -177,8 +176,8 @@ public class  ComplexFunction implements complex_function{
 	public void plus(function f1) {
 		if(this.root==null)
 		{
-		this.root=f1;
-		return;
+			this.root=f1;
+			return;
 		}
 		ComplexFunction f = (ComplexFunction) this.copy();
 		this.root=f;
@@ -189,8 +188,8 @@ public class  ComplexFunction implements complex_function{
 
 	@Override
 	public void mul(function f1) {
-		
-		
+
+
 		ComplexFunction f = (ComplexFunction) this.copy();
 		this.root=f;
 		this.right=f1;
@@ -241,7 +240,7 @@ public class  ComplexFunction implements complex_function{
 
 	@Override
 	public function right() {
-		return this.right();
+		return this.right.copy();
 	}
 
 	@Override
@@ -252,5 +251,28 @@ public class  ComplexFunction implements complex_function{
 
 
 
+	public boolean equals(Object obj)
+	{
+		if(! (obj instanceof function )) return false;
 
+		if( obj instanceof Monom||obj instanceof Polynom) 
+		{
+			Polynom pol = new Polynom();
+			pol = (Polynom) obj;
+			return pol.equals(obj);
+		}
+
+		if( obj instanceof ComplexFunction);
+		{
+			ComplexFunction cp = new ComplexFunction();
+			cp = (ComplexFunction) obj;
+
+			for(double i=-15;i<=15;i+=0.001) {
+				
+				if(Math.abs(this.f(i)-cp.f(i))>0.0001)return false;
+			}
+			return true;
+		}
+
+	}
 }
