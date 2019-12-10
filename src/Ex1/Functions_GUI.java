@@ -154,16 +154,16 @@ public class Functions_GUI implements functions {
 
 	@Override
 	public void drawFunctions(String json_file) {
-//		Gson gson = new Gson();
-//		try 
-//		{
-//			FileReader reader = new FileReader(json_file);
-//			//ComplexFunction cf = gson.fromJson(reader,ComplexFunction.class);
-//			
-//		} 
-//		catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		}
+		Gson gson = new Gson();
+		try 
+		{
+			FileReader reader = new FileReader(json_file);
+			Gui_Params gp = gson.fromJson(reader,Gui_Params.class);
+			 this.drawFunctions(gp.width, gp.height, gp.rx, gp.ry, gp. resolution);
+		} 
+		catch (FileNotFoundException e) {
+			this.drawFunctions(500, 500, new Range(-10,10),new Range(-10, 10),200);
+		}
 	}
 
 	}
