@@ -18,6 +18,7 @@ class MonomTestJunit {
 	@Test
 	void testDerivative() 
 	{
+		
 		Monom m1=new Monom(4, 2);	
 		Monom m2=new Monom(1, 2);	
 		Monom m3=new Monom(4, 0);
