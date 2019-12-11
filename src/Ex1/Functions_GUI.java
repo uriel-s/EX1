@@ -95,7 +95,7 @@ public class Functions_GUI implements functions {
 
 	@Override
 	public void initFromFile(String file) throws IOException {
-		function fun = new Monom(Monom.ZERO);
+		function fun = new ComplexFunction();
 		String line = "";
 		try 
 		{
@@ -120,14 +120,17 @@ public class Functions_GUI implements functions {
 		{
 			PrintWriter pw = new PrintWriter(new File(file));
 
-			StringBuilder sb = new StringBuilder();
+			//StringBuilder sb = new StringBuilder();
 			Iterator <function> i = this.Func.iterator();
 
 			while(i.hasNext()) {
-				sb.append(i.next().toString()+"\n"); 
+				StringBuilder sb = new StringBuilder();
+				sb.append(i.next().toString()); 
+				pw.write(sb.toString());
+				pw.write("\n");
 			}
 
-			pw.write(sb.toString());
+			//	pw.write(sb.toString());
 			pw.close();
 		} 
 		catch (FileNotFoundException e) 
@@ -142,8 +145,10 @@ public class Functions_GUI implements functions {
 		StdDraw.setCanvasSize(width,height);
 		StdDraw.setXscale(rx.get_min(), rx.get_max());
 		StdDraw.setYscale(ry.get_min(), ry.get_max());
-		StdDraw.setPenRadius(0.005);
+		StdDraw.setPenRadius(0.002);
 		//horizon lines
+		StdDraw.setPenColor(Color.GRAY);
+
 		for(double i= ry.get_min(); i<=ry.get_max();i++) {
 			StdDraw.line(rx.get_min(), i, rx.get_max(), i);
 			StdDraw.text(0.2,i+0.2,i+""); 
@@ -154,13 +159,14 @@ public class Functions_GUI implements functions {
 			StdDraw.text(j+0.2,0.2,j+""); 
 		}
 
-		//Drawing the base lines.	
+		//Drawing the base lines.
+		StdDraw.setPenRadius(0.005);
 		StdDraw.setPenColor(Color.BLACK);
 		// x line.
 		StdDraw.line(rx.get_min(),0, rx.get_max(), 0);
 		//y line.
 		StdDraw.line(0, ry.get_min(), 0, ry.get_max());
-		
+
 		double r = Math.abs(rx.get_max()-rx.get_min())/resolution;
 		for(int i=0; i<Func.size(); i++) {
 			StdDraw.setPenColor(Colors[i%Colors.length]);
@@ -177,10 +183,15 @@ public class Functions_GUI implements functions {
 		{
 			FileReader reader = new FileReader(json_file);
 			Gui_Params gp = gson.fromJson(reader,Gui_Params.class);
-			this.drawFunctions(gp.width, gp.height, gp.rx, gp.ry, gp. resolution);
+			Range rx=new Range(gp.Range_X[0], gp.Range_X[1]);
+			Range ry=new Range(gp.Range_Y[0], gp.Range_Y[1]);
+
+			this.drawFunctions(gp.Width, gp.Height, rx,ry, gp. Resolution);
 		} 
 		catch (FileNotFoundException e) {
-			this.drawFunctions(1000, 600, new Range(-10,10),new Range(-10, 10),200);
+			Range rx=new Range(-10,10);
+			Range ry=new Range(-10, 10);
+			this.drawFunctions(1000, 600, rx,ry,200);
 		}
 	}
 

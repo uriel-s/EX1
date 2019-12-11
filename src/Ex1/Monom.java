@@ -62,6 +62,7 @@ public class Monom implements function{
 
 	public Monom(String s) {
 		s=s.toLowerCase();
+		s=s.replaceAll("\\s","");
 		if(s=="0") {
 			this.set_coefficient(0);
 			this.set_power(0);
@@ -178,8 +179,11 @@ public class Monom implements function{
 	public  double Sumcoefficient(String s) {
 
 		String s1 = s;
-		if(s.charAt(0)<'0'||s.charAt(0)>'9')
+		if(s.charAt(0)<'0'||s.charAt(0)>'9') {
+			System.out.println(s.charAt(0));
+			System.out.println(s);
 			throw new RuntimeException("input isnt good ");	
+		}
 		counter=0;
 
 		while (s.charAt(0)>='0'&&s.charAt(0)<='9' ||s.charAt(0)=='.') 	{
