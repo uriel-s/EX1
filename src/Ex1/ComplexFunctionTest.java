@@ -1,5 +1,7 @@
 package Ex1;
 
+import static org.junit.Assume.assumeFalse;
+import static org.junit.Assume.assumeTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -165,19 +167,23 @@ class ComplexFunctionTest {
 
 	@Test
 	void testEquals() {
-		ComplexFunction	expected1= new ComplexFunction(cp1);
-		ComplexFunction	expected2= new ComplexFunction(cp1);
+		ComplexFunction	expected1= new ComplexFunction(cp10);
+		ComplexFunction	expected2= new ComplexFunction(cp10);
+		ComplexFunction	expected3= new ComplexFunction(cp1);
 
 
-		
-		boolean b = expected1.equals(expected2);
-      System.out.println("aaa");
-		System.out.println(b);	
-		//assertEquals(expected2.toString(),expected1.toString());
+
+		boolean b1 = expected1.equals(expected2);
+		boolean b2 = expected3.equals(expected2);
+
+
+		assumeTrue(b1);
+
+		assumeFalse(b2);;
 
 
 	}
-	
-	
+
+
 
 }

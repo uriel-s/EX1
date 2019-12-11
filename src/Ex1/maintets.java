@@ -17,13 +17,13 @@ ComplexFunction cp6= (ComplexFunction) cp5.copy();
 ComplexFunction cp7= (ComplexFunction) cp6.copy();
 ComplexFunction cp8= (ComplexFunction) cp7.copy();
 ComplexFunction cp9= (ComplexFunction) cp8.copy();
-ComplexFunction cp11= new ComplexFunction();
+ComplexFunction cp11= new ComplexFunction(Operation.Times,cp10,p2);
 
 //cp1=(ComplexFunction) cp1.initFromString("Plus(Plus(+1.0x^0,+2.0x^0),+1.0x^0)");
-double x= cp4.f(3.3);
+//double x= cp4.f(3.3);
 
-
-
+System.out.println(cp10);
+System.out.println(cp11.f(2.5));
 //System.out.println("this is cp1 "+cp1);
 
 //System.out.println("this is cp2 "+cp2);
@@ -40,13 +40,12 @@ ComplexFunction	expected2= new ComplexFunction(cp6);
 //System.out.println(expected2.f(14));
 
 boolean b = expected2.equals(expected2);
-System.out.println(b);	
-System.out.println(expected2.f(14));
-System.out.println(expected1.f(14));
+
 
 	}
 
 }
+
 
 
 
