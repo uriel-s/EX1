@@ -120,7 +120,6 @@ public class Functions_GUI implements functions {
 		{
 			PrintWriter pw = new PrintWriter(new File(file));
 
-			//StringBuilder sb = new StringBuilder();
 			Iterator <function> i = this.Func.iterator();
 
 			while(i.hasNext()) {
@@ -129,8 +128,6 @@ public class Functions_GUI implements functions {
 				pw.write(sb.toString());
 				pw.write("\n");
 			}
-
-			//	pw.write(sb.toString());
 			pw.close();
 		} 
 		catch (FileNotFoundException e) 
@@ -158,7 +155,6 @@ public class Functions_GUI implements functions {
 			StdDraw.line(j, ry.get_min(), j, ry.get_max());
 			StdDraw.text(j+0.2,0.2,j+""); 
 		}
-
 		//Drawing the base lines.
 		StdDraw.setPenRadius(0.005);
 		StdDraw.setPenColor(Color.BLACK);
