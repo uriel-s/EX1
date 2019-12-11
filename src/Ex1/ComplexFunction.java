@@ -172,7 +172,7 @@ public class  ComplexFunction implements complex_function{
 	}
 
 	@Override
-	// didnt finished
+	
 	public void plus(function f1) {
 		if(this.root==null)
 		{
