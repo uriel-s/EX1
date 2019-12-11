@@ -14,10 +14,10 @@ import com.google.gson.*;
 
 public class Functions_GUI implements functions {
 	public ArrayList<function> Func = new ArrayList<function>();
-	
+
 	public static Color[] Colors = {Color.blue, Color.cyan,
 			Color.MAGENTA, Color.ORANGE, Color.red, Color.GREEN, Color.PINK};
-	
+
 	@Override
 	public boolean add(function arg0) {
 		return this.Func.add(arg0);
@@ -105,7 +105,7 @@ public class Functions_GUI implements functions {
 			{
 				Func.add(fun.initFromString(line));
 			}
-			  br.close();
+			br.close();
 		} 
 		catch (IOException e) 
 		{
@@ -142,13 +142,31 @@ public class Functions_GUI implements functions {
 		StdDraw.setCanvasSize(width,height);
 		StdDraw.setXscale(rx.get_min(), rx.get_max());
 		StdDraw.setYscale(ry.get_min(), ry.get_max());
-		StdDraw.setPenRadius(0.01);
+		StdDraw.setPenRadius(0.005);
+		//horizon lines
+		for(double i= ry.get_min(); i<=ry.get_max();i++) {
+			StdDraw.line(rx.get_min(), i, rx.get_max(), i);
+			StdDraw.text(0.2,i+0.2,i+""); 
+		}
+		//vertical lines
+		for(double j=rx.get_min(); j<=rx.get_max(); j++) {
+			StdDraw.line(j, ry.get_min(), j, ry.get_max());
+			StdDraw.text(j+0.2,0.2,j+""); 
+		}
+
+		//Drawing the base lines.	
+		StdDraw.setPenColor(Color.BLACK);
+		// x line.
+		StdDraw.line(rx.get_min(),0, rx.get_max(), 0);
+		//y line.
+		StdDraw.line(0, ry.get_min(), 0, ry.get_max());
+		
 		double r = Math.abs(rx.get_max()-rx.get_min())/resolution;
 		for(int i=0; i<Func.size(); i++) {
 			StdDraw.setPenColor(Colors[i%Colors.length]);
-          for(double j=rx.get_min();j<=rx.get_max();j+=r) {
-	            StdDraw.line(j, Func.get(i).f(j), j+r, Func.get(i).f(j+r));
-          }
+			for(double j=rx.get_min();j<=rx.get_max();j+=r) {
+				StdDraw.line(j, Func.get(i).f(j), j+r, Func.get(i).f(j+r));
+			}
 		}
 	}
 
@@ -159,13 +177,13 @@ public class Functions_GUI implements functions {
 		{
 			FileReader reader = new FileReader(json_file);
 			Gui_Params gp = gson.fromJson(reader,Gui_Params.class);
-			 this.drawFunctions(gp.width, gp.height, gp.rx, gp.ry, gp. resolution);
+			this.drawFunctions(gp.width, gp.height, gp.rx, gp.ry, gp. resolution);
 		} 
 		catch (FileNotFoundException e) {
-			this.drawFunctions(500, 500, new Range(-10,10),new Range(-10, 10),200);
+			this.drawFunctions(1000, 600, new Range(-10,10),new Range(-10, 10),200);
 		}
 	}
 
-	}
+}
 
 
